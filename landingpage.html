@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>CivicLens - Report. Track. Resolve.</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary": "#ffffff",
+                        "secondary": "#006d37",
+                        "primary-fixed-dim": "#9acbff",
+                        "background": "#f8f9ff",
+                        "on-background": "#191c20",
+                        "surface": "#f8f9ff",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#d9e9ff",
+                        "on-secondary-fixed-variant": "#005228",
+                        "surface-container": "#eceef3",
+                        "surface-dim": "#d8dadf",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#1b6ca8",
+                        "secondary-fixed-dim": "#61de8a",
+                        "tertiary-container": "#935c00",
+                        "inverse-surface": "#2e3135",
+                        "tertiary-fixed": "#ffddb9",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#717881",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#414750",
+                        "on-primary-fixed": "#001d34",
+                        "surface-bright": "#f8f9ff",
+                        "tertiary-fixed-dim": "#ffb961",
+                        "on-secondary-container": "#007239",
+                        "tertiary": "#724600",
+                        "secondary-fixed": "#7efba4",
+                        "surface-variant": "#e1e2e8",
+                        "surface-container-low": "#f2f3f9",
+                        "on-secondary-fixed": "#00210c",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#eff0f6",
+                        "on-tertiary-container": "#ffe4c8",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#9acbff",
+                        "on-surface": "#191c20",
+                        "surface-tint": "#02629e",
+                        "outline-variant": "#c0c7d1",
+                        "on-tertiary-fixed": "#2b1700",
+                        "surface-container-highest": "#e1e2e8",
+                        "on-primary-fixed-variant": "#004a78",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#7bf8a1",
+                        "primary-fixed": "#cfe5ff",
+                        "primary": "#005387",
+                        "on-tertiary-fixed-variant": "#663e00",
+                        "surface-container-high": "#e6e8ed"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "xs": "4px",
+                        "container-max": "1200px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "lg": "48px",
+                        "xl": "80px"
+                    },
+                    fontFamily: {
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    fontSize: {
+                        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "500" }],
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "display-lg-mobile": ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "label-sm": ["12px", { lineHeight: "16px", fontWeight: "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .map-grid-bg {
+            background-image:
+                linear-gradient(to right, rgba(113, 120, 129, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(113, 120, 129, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col relative overflow-x-hidden">
+    <!-- Background Grid -->
+    <div class="absolute inset-0 map-grid-bg pointer-events-none -z-10"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-background pointer-events-none -z-10"></div>
+    <!-- Main Content Canvas -->
+    <main class="flex-grow flex flex-col justify-center items-center px-gutter py-xl relative">
+        <!-- Hero Section -->
+        <div class="w-full max-w-md mx-auto text-center flex flex-col items-center gap-md">
+            <!-- Logo Mark -->
+            <div
+                class="w-16 h-16 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center mb-xs shadow-sm">
+                <span class="material-symbols-outlined"
+                    style="font-size: 32px; font-variation-settings: 'FILL' 1;">location_on</span>
+            </div>
+            <!-- Headlines -->
+            <div class="flex flex-col gap-sm">
+                <h1 class="font-display-lg-mobile text-display-lg-mobile text-primary">Report. Track. Resolve.</h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-[300px] mx-auto">
+                    AI-powered civic issue reporting for your community
+                </p>
+            </div>
+            <!-- Actions -->
+            <div class="flex flex-col gap-sm w-full mt-sm">
+                <button
+                    class="w-full bg-primary-container text-on-primary-container font-label-md text-label-md py-sm px-gutter rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-xs shadow-sm">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+                    Report an issue
+                </button>
+                <button
+                    class="w-full border border-primary-container text-primary-container font-label-md text-label-md py-sm px-gutter rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors flex items-center justify-center gap-xs">
+                    <span class="material-symbols-outlined">map</span>
+                    View live map
+                </button>
+                <button
+                    class="w-full border border-outline-variant text-on-surface-variant font-label-md text-label-md py-sm px-gutter rounded-lg hover:bg-surface-variant transition-colors flex items-center justify-center gap-xs">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </button>
+            </div>
+        </div>
+        <!-- Stat Strip -->
+        <div class="w-full max-w-md mx-auto mt-xl flex flex-col gap-md">
+            <div
+                class="bg-surface-container-lowest border border-surface-variant rounded-lg p-md flex items-center justify-between shadow-sm">
+                <div class="flex flex-col">
+                    <span class="font-headline-md text-headline-md text-primary-container">500+</span>
+                    <span class="font-label-md text-label-md text-on-surface-variant">issues resolved</span>
+                </div>
+                <div
+                    class="w-10 h-10 rounded-full bg-surface-container-low text-primary flex items-center justify-center">
+                    <span class="material-symbols-outlined">task_alt</span>
+                </div>
+            </div>
+            <div
+                class="bg-surface-container-lowest border border-surface-variant rounded-lg p-md flex items-center justify-between shadow-sm">
+                <div class="flex flex-col">
+                    <span class="font-headline-md text-headline-md text-primary-container">12</span>
+                    <span class="font-label-md text-label-md text-on-surface-variant">wards covered</span>
+                </div>
+                <div
+                    class="w-10 h-10 rounded-full bg-surface-container-low text-primary flex items-center justify-center">
+                    <span class="material-symbols-outlined">my_location</span>
+                </div>
+            </div>
+            <div
+                class="bg-surface-container-lowest border border-surface-variant rounded-lg p-md flex items-center justify-between shadow-sm">
+                <div class="flex flex-col">
+                    <span class="font-headline-md text-headline-md text-primary-container">AI</span>
+                    <span class="font-label-md text-label-md text-on-surface-variant">verified in seconds</span>
+                </div>
+                <div
+                    class="w-10 h-10 rounded-full bg-surface-container-low text-primary flex items-center justify-center">
+                    <span class="material-symbols-outlined">bolt</span>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer Component mapped from JSON -->
+    <footer
+        class="bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline flat no shadows flex flex-col md:flex-row justify-between items-center gap-base px-gutter py-md w-full full-width bottom-0 z-10 relative">
+        <div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">
+            CivicLens
+        </div>
+        <p
+            class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant text-center md:text-left">
+            © 2024 CivicLens. Empowering communities through transparency.
+        </p>
+        <nav class="flex flex-wrap justify-center gap-sm mt-sm md:mt-0">
+            <a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors"
+                href="#">Terms of Service</a>
+            <a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors"
+                href="#">Privacy Policy</a>
+            <a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors"
+                href="#">Contact Support</a>
+            <a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors"
+                href="#">Accessibility</a>
+        </nav>
+    </footer>
+</body>
+
+</html>
